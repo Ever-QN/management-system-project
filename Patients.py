@@ -35,3 +35,30 @@ class Patient:
 
     def setAge(self, newAge):
         self.__age = newAge
+
+    def formatPatientInfo(self):
+        pass
+    
+    def enterPatientInfo(self):
+        pass
+
+    def readPatientsFile(self):
+        pass
+
+    def searchPatientById(self):
+        pass
+
+    def displayPatientInfo(self):
+        pass
+
+    def editPatientInfo(self):
+        pass
+
+    def displayPatientsList(self):
+        pass
+
+    def writeListOfPatientsToFile(self):
+        pass
+
+    def addPatientToFile(self):
+        pass
