@@ -27,3 +27,25 @@ class Facility:
         for item in self.facilities_list:
             f.writelines(item)
         f.close()
+
+# facility = Facility("name")
+
+# def facilities_menu():
+#     facilities_Input = input("""Facilities Menu:
+#     1 - Display Facilities list
+#     2 - Add Facility
+#     3 - Back to the Main Menu
+#     """)
+#     return int(facilities_Input)
+
+# def facilities_navigate(userInput):
+#     match userInput:
+#         case 1:
+#             facility.displayFacilities()
+#         case 2:
+#             facility.addFacilities()
+#             facility.writeListOfFacilitiesToFile()
+#         case 3:
+#             return input
+
+#The above is commented out for now, may be reused for the final product to navigate through menus.
