@@ -1,4 +1,5 @@
 class Patient:
+    patients_list = []
     def __init__(self, pid, name, disease, gender, age):
         self.__pid = pid
         self.__name = name
@@ -43,7 +44,12 @@ class Patient:
         pass
 
     def readPatientsFile(self):
-        pass
+        f = open("patients.txt", "r")
+        for lines in f.readlines():
+            column = lines.split("_")
+            patientObject = Patient(column[0], column,[1], column[2], column[3], column[4])
+            self.patients_list.append(patientObject)
+        f.close()
 
     def searchPatientById(self):
         pass
@@ -55,7 +61,8 @@ class Patient:
         pass
 
     def displayPatientsList(self):
-        pass
+        for x in range(len(self.patients_list)):
+            print("{:<15} {:<15} {:<15} {:<15} {:<15}".format(self.patients_list[x].__pid, self.patients_list[x].__name, self.patients_list[x].__disease, self.patients_list[x].__gender, self.patients_list[x].__age))
 
     def writeListOfPatientsToFile(self):
         pass
