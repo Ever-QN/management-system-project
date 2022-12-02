@@ -42,7 +42,7 @@ class Laboratory:
     # displayLabList
     def displayLabsList():
         file = open('Project Data\\files\laboratories.txt', 'r')
-        print('Lab' + '\t\t\t' + 'Cost')
+        print('{:<15} {:<15}'.format('Lab','Cost'))
         Laboratory.readLaboratoriesFile()
         file.close()
     
@@ -58,8 +58,23 @@ class Laboratory:
             costArea = re.findall('\d\d+', str(cost))
             for labName in labArea:
                 for labCost in costArea:
-                    labInfo = labName + '\t\t' + labCost
-                    print(labInfo)
+                    labName, labCost
+                    print('{:<15} {:<15}'.format(labName, labCost))
         file.close()
 
-Laboratory.writeListOfLabsToFile()
+print('''Laboratories Menu:
+      1\t-\tDisplay laboratories list
+      2\t-\tAdd Laboratory
+      3\t-\tBack to the Main Menu''')
+displayLab = 1
+addLab = 2
+backMenu = 3
+while True:
+    optionLab = int(input('Select Lab Menu: '))
+    if optionLab == 1:
+        Laboratory.displayLabsList()
+    if optionLab == 2:
+        Laboratory.addLabToFile()
+    if optionLab == 3:
+        break
+    
