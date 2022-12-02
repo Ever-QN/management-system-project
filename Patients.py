@@ -37,7 +37,11 @@ class Patients:
     def setAge(self, newAge):
         self.__age = newAge
 
+    def __str__(self):
+        return f"{self.__pid} {self.__name} {self.__disease} {self.__gender} {self.__age}"
+
     def formatPatientInfo(self):
+        print(self.__pid, "_", self.__name)
         pass
     
     def enterPatientInfo(self):
@@ -56,12 +60,10 @@ class Patients:
 
     def readPatientsFile(self):
         f = open("patients.txt", "r")
-        for lines in f.readlines():
-            column = lines.split("_")
-            patientObject = Patients(column[0], column,[1], column[2], column[3])
+        for line in f.readlines():
+            column = line.split("_")
+            patientObject = Patients(column[0], column[1], column[2], column [3], column[4])
             self.patients_list.append(patientObject)
-        f.close()
-
     def searchPatientById(self):
         pass
 
@@ -73,13 +75,13 @@ class Patients:
 
     def displayPatientsList(self):
         for x in range(len(self.patients_list)):
-            print("{:<15} {:<15} {:<15} {:<15} {:<15}".format(self.patients_list[x].__pid, self.patients_list[x].__name, self.patients_list[x].__disease, self.patients_list[x].__gender, self.patients_list[x].__age))
+            print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
 
     def writeListOfPatientsToFile(self):
         pass
 
     def addPatientToFile(self):
-        pass
+        pass 
 
 
 
@@ -87,4 +89,5 @@ class Patients:
 
 displayInfo = Patients()
 displayInfo.readPatientsFile()
-print(displayInfo.displayPatientsList())
+displayInfo.displayPatientsList()
+
