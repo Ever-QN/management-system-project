@@ -59,6 +59,7 @@ class Patients:
         patient_Info.append(newPatientDisease)
         patient_Info.append(newPatientGender)
         patient_Info.append(newPatientAge)
+        "_".join(patient_Info)
         return patient_Info
 
     def readPatientsFile(self):
@@ -88,7 +89,23 @@ class Patients:
         pass
 
     def editPatientInfo(self):
-        pass
+        userInput = input("Please enter the id of the Patient that you want to edit their information: ")
+        with open("patients.txt", "r") as file:
+            edit_Patient_Info = []
+            data = file.readlines()
+            for x in range(len(self.patients_list)):
+                if userInput == self.patients_list[x].__pid:
+                    patientID = userInput
+                    newPatientName = input("Enter patient name: ")
+                    newPatientDisease = input("Enter patient disease: ")
+                    newPatientGender = input("Enter patient gender (male or female): ")
+                    newPatientAge = input("Enter patient age: ")
+                    edit_Patient_Info.append(patientID)
+                    edit_Patient_Info.append(newPatientName)
+                    edit_Patient_Info.append(newPatientDisease)
+                    edit_Patient_Info.append(newPatientGender)
+                    edit_Patient_Info.append(newPatientAge)
+                    data[x] = "_".join(edit_Patient_Info)
 
     def displayPatientsList(self):
         for x in range(len(self.patients_list)):
@@ -107,4 +124,6 @@ class Patients:
 displayInfo = Patients()
 displayInfo.readPatientsFile()
 displayInfo.displayPatientsList()
-displayInfo.searchPatientById()
+# displayInfo.searchPatientById()
+
+displayInfo.editPatientInfo()
