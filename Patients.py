@@ -70,11 +70,14 @@ class Patients:
 
     def searchPatientById(self):
         userInput = input("Enter the patient Id: ")
+        self.displayPatientInfo(userInput)
+
+    def displayPatientInfo(self, input):
         success = False
         for x in range(len(self.patients_list)):
-            if userInput != self.patients_list[x].__pid:
+            if input != self.patients_list[x].__pid:
                 success = False
-            elif userInput == self.patients_list[x].__pid:
+            elif input == self.patients_list[x].__pid:
                 success = True
                 break
 
@@ -82,10 +85,6 @@ class Patients:
             print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
         elif success == False:
             print("Can't find the patient with the same id in the system")
-
-
-
-    def displayPatientInfo(self):
         pass
 
     def editPatientInfo(self):
