@@ -41,7 +41,18 @@ class Patient:
         pass
     
     def enterPatientInfo(self):
-        pass
+        patient_Info = []
+        newPatientID = input("Enter patient id (pid): ")
+        newPatientName = input("Enter patient name: ")
+        newPatientDisease = input("Enter patient disease: ")
+        newPatientGender = input("Enter patient gender (male or female): ")
+        newPatientAge = input("Enter patient age: ")
+        patient_Info.append(newPatientID)
+        patient_Info.append(newPatientName)
+        patient_Info.append(newPatientDisease)
+        patient_Info.append(newPatientGender)
+        patient_Info.append(newPatientAge)
+        return patient_Info
 
     def readPatientsFile(self):
         f = open("patients.txt", "r")
