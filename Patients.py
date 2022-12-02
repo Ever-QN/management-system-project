@@ -39,6 +39,9 @@ class Patients:
 
     def __str__(self):
         return f"{self.__pid} {self.__name} {self.__disease} {self.__gender} {self.__age}"
+    
+    def __repr__(self):
+        return str(self)
 
     def formatPatientInfo(self):
         print(self.__pid, "_", self.__name)
@@ -64,8 +67,23 @@ class Patients:
             column = line.split("_")
             patientObject = Patients(column[0], column[1], column[2], column [3], column[4])
             self.patients_list.append(patientObject)
+
     def searchPatientById(self):
-        pass
+        userInput = input("Enter the patient Id: ")
+        success = False
+        for x in range(len(self.patients_list)):
+            if userInput != self.patients_list[x].__pid:
+                success = False
+            elif userInput == self.patients_list[x].__pid:
+                success = True
+                break
+
+        if success:
+            print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
+        elif success == False:
+            print("Can't find the patient with the same id in the system")
+
+
 
     def displayPatientInfo(self):
         pass
@@ -90,4 +108,4 @@ class Patients:
 displayInfo = Patients()
 displayInfo.readPatientsFile()
 displayInfo.displayPatientsList()
-
+displayInfo.searchPatientById()
