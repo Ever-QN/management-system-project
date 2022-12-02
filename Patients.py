@@ -1,6 +1,6 @@
-class Patient:
+class Patients:
     patients_list = []
-    def __init__(self, pid, name, disease, gender, age):
+    def __init__(self, pid="", name="", disease="", gender="", age=""):
         self.__pid = pid
         self.__name = name
         self.__disease = disease
@@ -58,7 +58,7 @@ class Patient:
         f = open("patients.txt", "r")
         for lines in f.readlines():
             column = lines.split("_")
-            patientObject = Patient(column[0], column,[1], column[2], column[3], column[4])
+            patientObject = Patients(column[0], column,[1], column[2], column[3])
             self.patients_list.append(patientObject)
         f.close()
 
@@ -80,3 +80,11 @@ class Patient:
 
     def addPatientToFile(self):
         pass
+
+
+
+
+
+displayInfo = Patients()
+displayInfo.readPatientsFile()
+print(displayInfo.displayPatientsList())
