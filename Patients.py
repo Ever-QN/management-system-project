@@ -47,18 +47,19 @@ class Patients:
         return "_".join(patient_list_info) + "\n"
     
     def enterPatientInfo(self):
-        patient_Info = []
+        patient_info = []
         newPatientID = input("Enter patient id (pid): ")
         newPatientName = input("Enter patient name: ")
         newPatientDisease = input("Enter patient disease: ")
         newPatientGender = input("Enter patient gender (male or female): ")
         newPatientAge = input("Enter patient age: ")
-        patient_Info.append(newPatientID)
-        patient_Info.append(newPatientName)
-        patient_Info.append(newPatientDisease)
-        patient_Info.append(newPatientGender)
-        patient_Info.append(newPatientAge)
-        return patient_Info
+        patient_info.append(newPatientID)
+        patient_info.append(newPatientName)
+        patient_info.append(newPatientDisease)
+        patient_info.append(newPatientGender)
+        patient_info.append(newPatientAge)
+        self.addPatientToFile(patient_info)
+        return patient_info
 
     def readPatientsFile(self):
         f = open("patients.txt", "r")
@@ -66,6 +67,7 @@ class Patients:
             column = line.split("_")
             patientObject = Patients(column[0], column[1], column[2], column [3], column[4])
             self.patients_list.append(patientObject)
+        return self.patients_list
 
     def searchPatientById(self):
         userInput = input("Enter the patient Id: ")
@@ -90,7 +92,7 @@ class Patients:
         userInput = input("Please enter the id of the Patient that you want to edit their information: ")
         with open("patients.txt", "r") as file:
             lines = file.readlines()
-            edit_Patient_Info = []
+            edit_patient_info = []
             for x in range(len(self.patients_list)):
                 if userInput == self.patients_list[x].__pid:
                     patientID = userInput
@@ -99,26 +101,32 @@ class Patients:
                     newPatientDisease = input("Enter patient disease: ")
                     newPatientGender = input("Enter patient gender (male or female): ")
                     newPatientAge = input("Enter patient age: ")
-                    edit_Patient_Info.append(patientID)
-                    edit_Patient_Info.append(newPatientName)
-                    edit_Patient_Info.append(newPatientDisease)
-                    edit_Patient_Info.append(newPatientGender)
-                    edit_Patient_Info.append(newPatientAge)
-                    lines[x] = self.formatPatientInfo(edit_Patient_Info)
+                    edit_patient_info.append(patientID)
+                    edit_patient_info.append(newPatientName)
+                    edit_patient_info.append(newPatientDisease)
+                    edit_patient_info.append(newPatientGender)
+                    edit_patient_info.append(newPatientAge)
+                    lines[x] = self.formatPatientInfo(edit_patient_info)
                     with open("patients.txt", "w") as file:
                         for line in lines:
                             file.write(line)
+                    
                     
 
     def displayPatientsList(self):
         for x in range(len(self.patients_list)):
             print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
 
-    def writeListOfPatientsToFile(self):
-        pass
+    def writeListOfPatientsToFile(self, patients_list):
+        with open("patients.txt", "w") as file:
+                file.write(patients_list)
 
-    def addPatientToFile(self):
-        pass 
+    def addPatientToFile(self, new_patient_info):
+        with open("patients.txt", "a") as file:
+            new_patient_info = self.formatPatientInfo(new_patient_info)
+            file.write("\n" + new_patient_info)
+
+
 
 
 
@@ -127,6 +135,7 @@ class Patients:
 displayInfo = Patients()
 displayInfo.readPatientsFile()
 displayInfo.displayPatientsList()
+displayInfo.enterPatientInfo()
 # displayInfo.searchPatientById()
 
-displayInfo.editPatientInfo()
+# displayInfo.editPatientInfo()
