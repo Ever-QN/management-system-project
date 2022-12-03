@@ -15,4 +15,4 @@ Alberta Hospital (AH) requires that their management system application meets th
  #5 - 	Management <br />
 •	Uses classes to create objects that interact with each other <br />
 •	Uses the methods/functions listed below for each class. <br />
-•	Each object has descriptive properties/ characteristics that represent the work and actions of the class as outlined below. <br />
+•	Each object has descriptive properties/ characteristics that represent the work and actions of the class. <br />
