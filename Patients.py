@@ -125,17 +125,3 @@ class Patients:
         with open("patients.txt", "a") as file:
             new_patient_info = self.formatPatientInfo(new_patient_info)
             file.write("\n" + new_patient_info)
-
-
-
-
-
-
-
-displayInfo = Patients()
-displayInfo.readPatientsFile()
-displayInfo.displayPatientsList()
-displayInfo.enterPatientInfo()
-# displayInfo.searchPatientById()
-
-# displayInfo.editPatientInfo()
