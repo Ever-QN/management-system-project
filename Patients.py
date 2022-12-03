@@ -43,9 +43,8 @@ class Patients:
     def __repr__(self):
         return str(self)
 
-    def formatPatientInfo(self):
-        print(self.__pid, "_", self.__name)
-        pass
+    def formatPatientInfo(self, patient_list_info):
+        return "_".join(patient_list_info) + "\n"
     
     def enterPatientInfo(self):
         patient_Info = []
@@ -59,7 +58,6 @@ class Patients:
         patient_Info.append(newPatientDisease)
         patient_Info.append(newPatientGender)
         patient_Info.append(newPatientAge)
-        "_".join(patient_Info)
         return patient_Info
 
     def readPatientsFile(self):
@@ -91,11 +89,12 @@ class Patients:
     def editPatientInfo(self):
         userInput = input("Please enter the id of the Patient that you want to edit their information: ")
         with open("patients.txt", "r") as file:
+            lines = file.readlines()
             edit_Patient_Info = []
-            data = file.readlines()
             for x in range(len(self.patients_list)):
                 if userInput == self.patients_list[x].__pid:
                     patientID = userInput
+                    print(self.patients_list)
                     newPatientName = input("Enter patient name: ")
                     newPatientDisease = input("Enter patient disease: ")
                     newPatientGender = input("Enter patient gender (male or female): ")
@@ -105,7 +104,11 @@ class Patients:
                     edit_Patient_Info.append(newPatientDisease)
                     edit_Patient_Info.append(newPatientGender)
                     edit_Patient_Info.append(newPatientAge)
-                    data[x] = "_".join(edit_Patient_Info)
+                    lines[x] = self.formatPatientInfo(edit_Patient_Info)
+                    with open("patients.txt", "w") as file:
+                        for line in lines:
+                            file.write(line)
+                    
 
     def displayPatientsList(self):
         for x in range(len(self.patients_list)):
