@@ -10,10 +10,11 @@ class Laboratory:
         
     # writeListOfLabsToFile
     def writeListOfLabsToFile():
-        file = open('Project Data\\files\laboratories.txt', 'a')
+        file = open('Project Data\\files\laboratories.txt', 'w')
         global inputLab
         global inputCost
         numberLab = int(input('How many lab you want to write: '))
+        file.write('Lab_Cost')
         number = numberLab
         ite = 0
         for ite in range(number):
@@ -42,23 +43,23 @@ class Laboratory:
     # displayLabList
     def displayLabsList():
         file = open('Project Data\\files\laboratories.txt', 'r')
-        print('{:<15} {:<15}'.format('Lab','Cost'))
         Laboratory.readLaboratoriesFile()
         file.close()
     
     #readLaboratoriesFile
     def readLaboratoriesFile():
         file = open('Project Data\\files\laboratories.txt', 'r')
-        global labInfo
-        global labArea
-        global labCost
         for labSplit in file:
             lab, cost = labSplit.strip().split('_')
+            headLab = re.findall('Lab', str(lab))
+            headCost = re.findall('Cost', str(cost))
+            for headLabName in headLab:
+                for headCostName in headCost:
+                    print('{:<15} {:<15}'.format(headLabName, headCostName))
             labArea = re.findall('\D+\d', str(lab))
             costArea = re.findall('\d\d+', str(cost))
             for labName in labArea:
                 for labCost in costArea:
-                    labName, labCost
                     print('{:<15} {:<15}'.format(labName, labCost))
         file.close()
 
