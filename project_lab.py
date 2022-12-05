@@ -63,14 +63,14 @@ class Laboratory:
                     print('{:<15} {:<15}'.format(labName, labCost))
         file.close()
 
-print('''Laboratories Menu:
-      1 - Display laboratories list
-      2 - Add Laboratory  /#Just make some changes here
-      3 - Back to the Main Menu''')
 displayLab = 1
 addLab = 2
 backMenu = 3
 while True:
+    print('''Laboratories Menu:
+      1 - Display laboratories list
+      2 - Add Laboratory  /#Just make some changes here
+      3 - Back to the Main Menu''')
     optionLab = int(input('Select Lab Menu: '))
     if optionLab == 1:
         Laboratory.displayLabsList()
