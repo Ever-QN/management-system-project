@@ -125,3 +125,25 @@ class Patients:
         with open("patients.txt", "a") as file:
             new_patient_info = self.formatPatientInfo(new_patient_info)
             file.write("\n" + new_patient_info)
+
+    def patients_menu(self):
+        while True:
+            self.readPatientsFile()
+            patients_Input = int(input("""Patients Menu:
+1 - Display patients list
+2 - Search for patient by ID
+3 - Add patient
+4 - Edit patient info
+5 - Back to the Main Menu
+"""))
+            match patients_Input:
+                case 1:
+                    self.displayPatientsList()
+                case 2:
+                    self.searchPatientById()
+                case 3:
+                    self.enterPatientInfo()
+                case 4:
+                    self.editPatientInfo()
+                case 5:
+                    break

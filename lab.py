@@ -28,7 +28,7 @@ class Laboratory:
 
     # enterLaboratoryInfo
     def enterLaboratoryInfo():
-        file = open('Project Data\\files\laboratories.txt', 'a')
+        file = open('laboratories.txt', 'a')
         global inputLab
         global inputCost
         inputLab = str(input('Please enter Lab Name: '))
@@ -42,13 +42,13 @@ class Laboratory:
     
     # displayLabList
     def displayLabsList():
-        file = open('Project Data\\files\laboratories.txt', 'r')
+        file = open('laboratories.txt', 'r')
         Laboratory.readLaboratoriesFile()
         file.close()
     
     #readLaboratoriesFile
     def readLaboratoriesFile():
-        file = open('Project Data\\files\laboratories.txt', 'r')
+        file = open('laboratories.txt', 'r')
         for labSplit in file:
             lab, cost = labSplit.strip().split('_')
             headLab = re.findall('Lab', str(lab))
@@ -63,18 +63,16 @@ class Laboratory:
                     print('{:<15} {:<15}'.format(labName, labCost))
         file.close()
 
-displayLab = 1
-addLab = 2
-backMenu = 3
-# while True:
-#     print('''Laboratories Menu:
-#       1 - Display laboratories list
-#       2 - Add Laboratory  /#Just make some changes here
-#       3 - Back to the Main Menu''')
-#     optionLab = int(input('Select Lab Menu: '))
-#     if optionLab == 1:
-#         Laboratory.displayLabsList()
-#     if optionLab == 2:
-#         Laboratory.addLabToFile()
-#     if optionLab == 3:
-#         break
+    def labMenu(self):
+        while True:
+            print('''Laboratories Menu:
+            1 - Display laboratories list
+            2 - Add Laboratory  /#Just make some changes here
+            3 - Back to the Main Menu''')
+            optionLab = int(input('Select Lab Menu: '))
+            if optionLab == 1:
+                Laboratory.displayLabsList()
+            if optionLab == 2:
+                Laboratory.addLabToFile()
+            if optionLab == 3:
+                break

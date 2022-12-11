@@ -20,12 +20,9 @@ while True:
         doctorsInstance.docMenu()
     elif mainMenu == 2:
         facilityInstance.facilities_menu()
-        pass
     elif mainMenu == 3:
-        # labObject = lab()
-        pass
+        labInstance.labMenu()
     elif mainMenu == 4:
-        # patientsObject = patients()
-        pass
+        patientsInstance.patients_menu()
     elif mainMenu == 0:
         break
