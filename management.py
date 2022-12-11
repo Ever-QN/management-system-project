@@ -1,4 +1,12 @@
-import doctors, facilities, lab, patients
+from doctors import Doctors
+from facilities import Facility
+from lab import Laboratory
+from patients import Patients
+
+doctorsInstance = Doctors()
+facilityInstance = Facility()
+labInstance = Laboratory()
+patientsInstance = Patients()
 
 while True:
     print('''Welcome to Alberta Hospital (AH) Management system
@@ -9,11 +17,9 @@ while True:
     4 - Patients''')
     mainMenu = int(input())
     if mainMenu == 1:
-        # doctorsObject = doctors()
-        # doctorsObject.docMenu()
-        pass
+        doctorsInstance.docMenu()
     elif mainMenu == 2:
-        # facilitiesObject = facilities()
+        facilityInstance.facilities_menu()
         pass
     elif mainMenu == 3:
         # labObject = lab()
