@@ -23,7 +23,7 @@ class Facility:
 
 
     def writeListOfFacilitiesToFile(self):
-        f = open("facilitiestest.txt", "w")
+        f = open("facilities.txt", "w")
         for item in self.facilities_list:
             f.writelines(item)
         f.close()
