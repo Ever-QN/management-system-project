@@ -155,7 +155,7 @@ class Doctors:
             elif option == '3':
                 self.searchDoctorByName()
             elif option == '4':
-                dlist = self.enterDrInfo()
+                self.enterDrInfo()
             elif option == '5':
                 self.editDoctorInfo()
             elif option == '6':
