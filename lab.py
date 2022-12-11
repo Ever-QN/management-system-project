@@ -66,15 +66,15 @@ class Laboratory:
 displayLab = 1
 addLab = 2
 backMenu = 3
-while True:
-    print('''Laboratories Menu:
-      1 - Display laboratories list
-      2 - Add Laboratory  /#Just make some changes here
-      3 - Back to the Main Menu''')
-    optionLab = int(input('Select Lab Menu: '))
-    if optionLab == 1:
-        Laboratory.displayLabsList()
-    if optionLab == 2:
-        Laboratory.addLabToFile()
-    if optionLab == 3:
-        break
+# while True:
+#     print('''Laboratories Menu:
+#       1 - Display laboratories list
+#       2 - Add Laboratory  /#Just make some changes here
+#       3 - Back to the Main Menu''')
+#     optionLab = int(input('Select Lab Menu: '))
+#     if optionLab == 1:
+#         Laboratory.displayLabsList()
+#     if optionLab == 2:
+#         Laboratory.addLabToFile()
+#     if optionLab == 3:
+#         break

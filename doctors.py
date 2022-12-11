@@ -160,6 +160,3 @@ class Doctors:
                 self.editDoctorInfo()
             elif option == '6':
                 break
-                    
-d = Doctors()
-d.docMenu()

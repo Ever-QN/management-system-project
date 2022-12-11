@@ -1,3 +1,5 @@
+import doctors, facilities, lab, patients
+
 while True:
     print('''Welcome to Alberta Hospital (AH) Management system
     Select from the following options, or select 0 to stop:
@@ -5,14 +7,19 @@ while True:
     2 - Facilities
     3 - Laboratories
     4 - Patients''')
-    mainMenu = str(input())
+    mainMenu = int(input())
     if mainMenu == 1:
-        # Doctors menu
+        # doctorsObject = doctors()
+        # doctorsObject.docMenu()
+        pass
     elif mainMenu == 2:
-        # Facilities menu
+        # facilitiesObject = facilities()
+        pass
     elif mainMenu == 3:
-        # Laboratories menu
+        # labObject = lab()
+        pass
     elif mainMenu == 4:
-        # Patients
+        # patientsObject = patients()
+        pass
     elif mainMenu == 0:
         break
