@@ -3,14 +3,14 @@ import re
 class Laboratory:
     # addLabToFile
     def addLabToFile():
-        file = open('Project Data\\files\laboratories.txt', 'a')
+        file = open('laboratories.txt', 'a')
         Laboratory.enterLaboratoryInfo()            
         file.write('\n' + fileFormat)
         file.close()
         
     # writeListOfLabsToFile
     def writeListOfLabsToFile():
-        file = open('Project Data\\files\laboratories.txt', 'w')
+        file = open('laboratories.txt', 'w')
         global inputLab
         global inputCost
         numberLab = int(input('How many lab you want to write: '))
