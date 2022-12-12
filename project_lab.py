@@ -24,14 +24,14 @@ class Laboratory:
     def formatLab(self):
         print(self.__lab, '_', self.__cost)
     
-    #addLabToFile
+    # addLabToFile
     def addLabToFile():
         file = open('Project Data\\files\laboratories.txt', 'a')
         Laboratory.enterLaboratoryInfo()            
         file.write('\n' + fileFormat)
         file.close()
         
-    #writeListOfLabsToFile
+    # writeListOfLabsToFile
     def writeListOfLabsToFile():
         file = open('Project Data\\files\laboratories.txt', 'w')
         global inputLab
@@ -49,7 +49,7 @@ class Laboratory:
                 break
         file.close()
 
-    #enterLaboratoryInfo
+    # enterLaboratoryInfo
     def enterLaboratoryInfo():
         file = open('Project Data\\files\laboratories.txt', 'a')
         global inputLab
@@ -58,12 +58,12 @@ class Laboratory:
         inputCost = int(input('Please enter Lab Cost: '))
         Laboratory.formatDrInfo()
    
-    #formatDrInfo
+    # formatDrInfo
     def formatDrInfo():
         global fileFormat
         fileFormat = ("{0}_{1}".format(inputLab, inputCost))
     
-    #readLaboratoriesFile
+    # readLaboratoriesFile
     def readLaboratoriesFile(self):
         file = open('Project Data\\files\laboratories.txt', 'r')
         readLines = file.readlines()
@@ -72,7 +72,7 @@ class Laboratory:
             labItem = Laboratory(labLine[0], labLine[1])
             self.labList.append(labItem)
             
-    #displayLabList
+    # displayLabList
     def displayLabsList(self):
         for line in range(len(self.labList)):
             print('{:<15} {:<15}'.format(self.labList[line].__lab, self.labList[line].__cost))
