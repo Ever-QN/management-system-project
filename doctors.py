@@ -95,6 +95,9 @@ class Doctors:
             if uinput == self.doc_list[d].__id:
                 print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[0].__id, self.doc_list[0].__name, self.doc_list[0].__specialize, self.doc_list[0].__worktime, self.doc_list[0].__qualification, self.doc_list[0].__rmnum))
                 print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[d].__id, self.doc_list[d].__name, self.doc_list[d].__specialize, self.doc_list[d].__worktime, self.doc_list[d].__qualification, self.doc_list[d].__rmnum))
+            else:
+                print("Can't find the doctor with the same id/name in the system")
+                break
 
     def editDoctorInfo(self):
         new_doc = []
