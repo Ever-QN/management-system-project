@@ -77,7 +77,7 @@ class Laboratory:
             labItem = Laboratory(labLine[0], labLine[1])
             self.labList.append(labItem)
 
-    def labMenu():
+    def labMenu(self):
         while True:
             print('''Laboratories Menu:
             1 - Display laboratories list
@@ -91,5 +91,3 @@ class Laboratory:
                 Laboratory.addLabToFile()
             if optionLab == 3:
                 break
-
-Laboratory.labMenu()
