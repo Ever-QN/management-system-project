@@ -81,7 +81,7 @@ class Laboratory:
     def clearLabList(self):
         self.labList.clear()
 
-    def labMenu():
+    def labMenu(self):
         while True:
             print('''Laboratories Menu:
             1 - Display laboratories list
