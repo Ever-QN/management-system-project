@@ -44,7 +44,7 @@ class Patients:
         return str(self)
 
     def formatPatientInfo(self, patient_list_info):
-        return "_".join(patient_list_info) + "\n"
+        return "_".join(patient_list_info)
     
     def enterPatientInfo(self):
         patient_info = []
@@ -62,6 +62,7 @@ class Patients:
         return patient_info
 
     def readPatientsFile(self):
+        self.patients_list = []
         f = open("patients.txt", "r")
         for line in f.readlines():
             column = line.split("_")
@@ -86,7 +87,6 @@ class Patients:
             print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
         elif success == False:
             print("Can't find the patient with the same id in the system")
-        pass
 
     def editPatientInfo(self):
         userInput = input("Please enter the id of the Patient that you want to edit their information: ")
@@ -96,7 +96,6 @@ class Patients:
             for x in range(len(self.patients_list)):
                 if userInput == self.patients_list[x].__pid:
                     patientID = userInput
-                    print(self.patients_list)
                     newPatientName = input("Enter patient name: ")
                     newPatientDisease = input("Enter patient disease: ")
                     newPatientGender = input("Enter patient gender (male or female): ")
@@ -106,14 +105,15 @@ class Patients:
                     edit_patient_info.append(newPatientDisease)
                     edit_patient_info.append(newPatientGender)
                     edit_patient_info.append(newPatientAge)
+                    edit_patient_info[-1] = edit_patient_info[-1] + "\n"
                     lines[x] = self.formatPatientInfo(edit_patient_info)
                     with open("patients.txt", "w") as file:
                         for line in lines:
                             file.write(line)
-                    
-                    
+
 
     def displayPatientsList(self):
+        self.readPatientsFile()
         for x in range(len(self.patients_list)):
             print(f"{self.patients_list[x].__pid:<5} {self.patients_list[x].__name:<15} {self.patients_list[x].__disease:<10} {self.patients_list[x].__gender:<10} {self.patients_list[x].__age:<5}")
 
@@ -128,7 +128,6 @@ class Patients:
 
     def patients_menu(self):
         while True:
-            self.readPatientsFile()
             patients_Input = int(input("""Patients Menu:
 1 - Display patients list
 2 - Search for patient by ID
