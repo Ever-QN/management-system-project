@@ -1,6 +1,32 @@
 import re
 
 class Laboratory:
+    labList = []
+    def __init__(self, lab = "", cost = ""):
+        self.__lab = lab
+        self.__cost = cost
+        
+    def getLab(self):
+        return self.__lab
+    
+    def setLab(self, lab):
+        self.__lab = lab
+        
+    def getCost(self):
+        return self.__cost
+    
+    def setCost(self, cost):
+        self.__cost = cost
+<<<<<<< HEAD
+        
+    def __str__(self):
+        return f"My {self.__lab} is ${self.__cost}"
+    
+    def formatLab(self):
+        print(self.__lab, '_', self.__cost)
+=======
+>>>>>>> management
+    
     # addLabToFile
     def addLabToFile():
         file = open('laboratories.txt', 'a')
@@ -40,7 +66,29 @@ class Laboratory:
         global fileFormat
         fileFormat = ("{0}_{1}".format(inputLab, inputCost))
     
+<<<<<<< HEAD
+    # readLaboratoriesFile
+    def readLaboratoriesFile(self):
+        file = open('Project Data\\files\laboratories.txt', 'r')
+=======
     # displayLabList
+    def displayLabsList(self):
+        for line in range(len(self.labList)):
+            print('{:<15} {:<15}'.format(self.labList[line].__lab, self.labList[line].__cost))
+    
+    #readLaboratoriesFile
+    def readLaboratoriesFile(self):
+        file = open('laboratories.txt', 'r')
+>>>>>>> management
+        readLines = file.readlines()
+        for labSplit in readLines:
+            labLine = labSplit.split('_')
+            labItem = Laboratory(labLine[0], labLine[1])
+            self.labList.append(labItem)
+<<<<<<< HEAD
+            
+    # displayLabList
+<<<<<<<< HEAD:lab.py
     def displayLabsList():
         file = open('laboratories.txt', 'r')
         Laboratory.readLaboratoriesFile()
@@ -64,6 +112,10 @@ class Laboratory:
         file.close()
 
     def labMenu(self):
+=======
+
+    def labMenu():
+>>>>>>> management
         while True:
             print('''Laboratories Menu:
             1 - Display laboratories list
@@ -76,3 +128,31 @@ class Laboratory:
                 Laboratory.addLabToFile()
             if optionLab == 3:
                 break
+<<<<<<< HEAD
+========
+    def displayLabsList(self):
+        for line in range(len(self.labList)):
+            print('{:<15} {:<15}'.format(self.labList[line].__lab, self.labList[line].__cost))
+            
+            
+displayLab = 1
+addLab = 2
+backMenu = 3
+while True:
+    print('''Laboratories Menu:
+      1 - Display laboratories list
+      2 - Add Laboratory
+      3 - Back to the Main Menu''')
+    optionLab = int(input('Select Lab Menu: '))
+    if optionLab == 1:
+        Laboratory.displayLabsList()
+    if optionLab == 2:
+        Laboratory.addLabToFile()
+    if optionLab == 3:
+        break
+    
+>>>>>>>> management:project_lab.py
+=======
+
+Laboratory.labMenu()
+>>>>>>> management
