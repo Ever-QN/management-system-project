@@ -10,6 +10,7 @@ class Facility:
         self.__name = newName
 
     def displayFacilities(self):
+        self.facilities_list = []
         f = open("facilities.txt", "r")
         for line in f.readlines():
             print(line)
