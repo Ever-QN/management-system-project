@@ -74,6 +74,7 @@ class Doctors:
         return new_doc
         
     def readDoctorsFile(self):
+        self.doc_list = []
         f = open("doctors.txt", "r")
         lines = f.readlines()
         for l in lines:
@@ -92,7 +93,7 @@ class Doctors:
 
     def displayDoctorInfo(self, uinput):
         for d in range(len(self.doc_list)):
-            if uinput == self.doc_list[d].__id:
+            if uinput == self.doc_list[d].__id or uinput == self.doc_list[d].__name:
                 print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[0].__id, self.doc_list[0].__name, self.doc_list[0].__specialize, self.doc_list[0].__worktime, self.doc_list[0].__qualification, self.doc_list[0].__rmnum))
                 print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[d].__id, self.doc_list[d].__name, self.doc_list[d].__specialize, self.doc_list[d].__worktime, self.doc_list[d].__qualification, self.doc_list[d].__rmnum))
                 break
