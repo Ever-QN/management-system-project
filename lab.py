@@ -76,8 +76,11 @@ class Laboratory:
             labLine = labSplit.split('_')
             labItem = Laboratory(labLine[0], labLine[1])
             self.labList.append(labItem)
+        
+    def clearLabList(self):
+        self.labList.clear()
 
-    def labMenu(self):
+    def labMenu():
         while True:
             print('''Laboratories Menu:
             1 - Display laboratories list
@@ -87,6 +90,7 @@ class Laboratory:
             if optionLab == 1:
                 Laboratory().readLaboratoriesFile()
                 Laboratory().displayLabsList()
+                Laboratory().clearLabList()
             if optionLab == 2:
                 Laboratory.addLabToFile()
             if optionLab == 3:
