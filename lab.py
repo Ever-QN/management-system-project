@@ -66,7 +66,7 @@ class Laboratory:
     # displayLabList
     def displayLabsList(self):
         for line in range(len(self.labList)):
-            print('{:<15} {:<15}'.format(self.labList[line].__lab, self.labList[line].__cost))
+            print("{:<15} {:<15}".format(self.labList[line].__lab, self.labList[line].__cost))
     
     #readLaboratoriesFile
     def readLaboratoriesFile(self):
@@ -81,12 +81,15 @@ class Laboratory:
         while True:
             print('''Laboratories Menu:
             1 - Display laboratories list
-            2 - Add Laboratory  /#Just make some changes here
+            2 - Add Laboratory
             3 - Back to the Main Menu''')
             optionLab = int(input('Select Lab Menu: '))
             if optionLab == 1:
-                Laboratory.displayLabsList()
+                Laboratory().readLaboratoriesFile()
+                Laboratory().displayLabsList()
             if optionLab == 2:
                 Laboratory.addLabToFile()
             if optionLab == 3:
                 break
+
+Laboratory.labMenu()
