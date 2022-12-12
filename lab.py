@@ -77,6 +77,7 @@ class Laboratory:
             labItem = Laboratory(labLine[0], labLine[1])
             self.labList.append(labItem)
         
+    # clear lab list
     def clearLabList(self):
         self.labList.clear()
 
