@@ -53,7 +53,7 @@ class Doctors:
         return f"{self.__id} {self.__name} {self.__specialize} {self.__worktime} {self.__qualification} {self.__rmnum}"
 
     def formatDrInfo(self, list):
-        return '\n'+ '_'.join(list)
+        return '_'.join(list)
 
     def enterDrInfo(self):
         new_doc = []
@@ -91,31 +91,25 @@ class Doctors:
         self.displayDoctorInfo(input_name)
 
     def displayDoctorInfo(self, uinput):
-        with open("doctors.txt", "r") as f:
-            for l in f:
-                if l.startswith(uinput):
-                    output = l.replace("_", "       ")
-                    print('\n' + output)
-                elif uinput in l:
-                    output = l.replace("_", "       ")
-                    print('\n' + output)
-                else:
-                    pass
-        f.close()
+        for d in range(len(self.doc_list)):
+            if uinput == self.doc_list[d].__id:
+                print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[0].__id, self.doc_list[0].__name, self.doc_list[0].__specialize, self.doc_list[0].__worktime, self.doc_list[0].__qualification, self.doc_list[0].__rmnum))
+                print("{:<5} {:<23} {:<15} {:<15} {:<15} {:<15}".format(self.doc_list[d].__id, self.doc_list[d].__name, self.doc_list[d].__specialize, self.doc_list[d].__worktime, self.doc_list[d].__qualification, self.doc_list[d].__rmnum))
 
     def editDoctorInfo(self):
-        edit_info = []
+        new_doc = []
         uinput2 = input('Please enter the id of the doctor that you want to edit their information: ')
-        with open("doctors.txt", "r") as f:
-            for l in f:
-                if l.startswith(uinput2):
-                    edit_info = self.enterDrInfo()
-                    self.addDrToFile(edit_info)
-                    break
-                else:
-                    pass
-                    
-        f.close()
+        with open("doctors.txt") as freader, open("doctors.txt", "r+") as fwriter:
+            l = freader.readlines()
+            for d in range(len(self.doc_list)):
+                if uinput2 == self.doc_list[d].__id:
+                    new_doc = self.enterDrInfo()
+                    l[d] = self.formatDrInfo(new_doc)
+                    for line in l:
+                        fwriter.write(line)
+                    break                        
+        freader.close()
+        fwriter.close()
 
     def displayDoctocsList(self):
         for d in range(len(self.doc_list)):
@@ -125,10 +119,10 @@ class Doctors:
         with open("doctors.txt", "w") as f:
             f.write(doctors_list)
 
-    def addDrToFile(self, list):
-        flist = self.formatDrInfo(list)
+    def addDrToFile(self):
+        doclist = self.formatDrInfo(self.enterDrInfo())
         with open("doctors.txt", "a") as f:
-            f.write(flist)
+            f.write("\n" + doclist)
         f.close()
 
     def docMenu(self):
@@ -155,7 +149,7 @@ class Doctors:
             elif option == '3':
                 self.searchDoctorByName()
             elif option == '4':
-                self.enterDrInfo()
+                self.addDrToFile()
             elif option == '5':
                 self.editDoctorInfo()
             elif option == '6':
