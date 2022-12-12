@@ -53,7 +53,7 @@ class Doctors:
         return f"{self.__id} {self.__name} {self.__specialize} {self.__worktime} {self.__qualification} {self.__rmnum}"
 
     def formatDrInfo(self, list):
-        return '_'.join(list)
+        return '_'.join(list) + "\n"
 
     def enterDrInfo(self):
         new_doc = []
@@ -126,7 +126,7 @@ class Doctors:
     def addDrToFile(self):
         doclist = self.formatDrInfo(self.enterDrInfo())
         with open("doctors.txt", "a") as f:
-            f.write("\n" + doclist)
+            f.write(doclist)
         f.close()
 
     def docMenu(self):
