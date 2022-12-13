@@ -120,7 +120,7 @@ class Doctors:
                     new_doc.append(new_rmnum)
         
                     l[d] = self.formatDrInfo(new_doc)
-                    with open("doctors.txt") as fwriter:
+                    with open("doctors.txt", "w") as fwriter:
                         for line in l:
                             fwriter.write(line)
                     break                        
