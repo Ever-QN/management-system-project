@@ -103,14 +103,26 @@ class Doctors:
     def editDoctorInfo(self):
         new_doc = []
         uinput2 = input('Please enter the id of the doctor that you want to edit their information: ')
-        with open("doctors.txt") as freader, open("doctors.txt", "r+") as fwriter:
+        with open("doctors.txt", "r") as freader:
             l = freader.readlines()
             for d in range(len(self.doc_list)):
                 if uinput2 == self.doc_list[d].__id:
-                    new_doc = self.enterDrInfo()
+                    new_doc.append(uinput2)
+                    new_name = input('Enter new name: ')
+                    new_doc.append(new_name)
+                    new_specialize = input('Enter new Specilist in: ')
+                    new_doc.append(new_specialize)
+                    new_worktime = input('Enter new timing: ')
+                    new_doc.append(new_worktime)
+                    new_qualification = input('Enter new qualication: ')
+                    new_doc.append(new_qualification)
+                    new_rmnum = input('Enter new room number: ')
+                    new_doc.append(new_rmnum)
+        
                     l[d] = self.formatDrInfo(new_doc)
-                    for line in l:
-                        fwriter.write(line)
+                    with open("doctors.txt", "w") as fwriter:
+                        for line in l:
+                            fwriter.write(line)
                     break                        
         freader.close()
         fwriter.close()
