@@ -44,6 +44,7 @@ class Patients:
         return str(self)
 
     def formatPatientInfo(self, patient_list_info):
+        patient_list_info[-1] += "\n"
         return "_".join(patient_list_info)
     
     def enterPatientInfo(self):
@@ -93,6 +94,7 @@ class Patients:
         with open("patients.txt", "r") as file:
             lines = file.readlines()
             edit_patient_info = []
+            self.patients_list = self.readPatientsFile()
             for x in range(len(self.patients_list)):
                 if userInput == self.patients_list[x].__pid:
                     patientID = userInput
@@ -105,7 +107,6 @@ class Patients:
                     edit_patient_info.append(newPatientDisease)
                     edit_patient_info.append(newPatientGender)
                     edit_patient_info.append(newPatientAge)
-                    edit_patient_info = edit_patient_info[-1] + "\n"
                     lines[x] = self.formatPatientInfo(edit_patient_info)
                     with open("patients.txt", "w") as file:
                         for line in lines:
@@ -124,7 +125,7 @@ class Patients:
     def addPatientToFile(self, new_patient_info):
         with open("patients.txt", "a") as file:
             new_patient_info = self.formatPatientInfo(new_patient_info)
-            file.write("\n" + new_patient_info)
+            file.write(new_patient_info)
 
     def patients_menu(self):
         while True:
