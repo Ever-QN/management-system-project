@@ -53,6 +53,9 @@ class Doctors:
         return f"{self.__id} {self.__name} {self.__specialize} {self.__worktime} {self.__qualification} {self.__rmnum}"
 
     def formatDrInfo(self, list):
+        return "\n" + '_'.join(list)
+    
+    def formatnewDrInfo(self, list):
         return '_'.join(list) + "\n"
 
     def enterDrInfo(self):
@@ -119,7 +122,7 @@ class Doctors:
                     new_rmnum = input('Enter new room number: ')
                     new_doc.append(new_rmnum)
         
-                    l[d] = self.formatDrInfo(new_doc)
+                    l[d] = self.formatnewDrInfo(new_doc)
                     with open("doctors.txt", "w") as fwriter:
                         for line in l:
                             fwriter.write(line)
