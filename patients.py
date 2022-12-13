@@ -105,6 +105,7 @@ class Patients:
                     edit_patient_info.append(newPatientDisease)
                     edit_patient_info.append(newPatientGender)
                     edit_patient_info.append(newPatientAge)
+                    edit_patient_info = edit_patient_info[-1] + "\n"
                     lines[x] = self.formatPatientInfo(edit_patient_info)
                     with open("patients.txt", "w") as file:
                         for line in lines:
